@@ -296,6 +296,10 @@ class PayController extends Controller
         $out_trade_id = $parameter['out_trade_id'];
         //生成系统订单号
         $pay_orderid = $parameter['orderid'] ? $parameter['orderid'] : get_requestord();
+        
+
+        
+        
         //验签
         if ($this->verify()) {
             $Order                       = M("Order");
@@ -339,6 +343,9 @@ class PayController extends Controller
             $data['is_mianqian']         = $syschannel['is_mianqian'];
             //开启事物
             M()->startTrans();
+            
+      
+            
             //添加订单
             if ($Order->add($data)) {
                 //通道增加失败次数
